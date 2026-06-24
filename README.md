@@ -19,8 +19,9 @@ Commit regularly as you make progress.
 - **Constraints** — what rules should the system enforce? Think about what invalid states should never be allowed.
 - **Code organisation** — how will you separate concerns? Each operation should have a clear home in your code.
 
-* Data structure map vs class entity class!
-* map have only key and value pair while entity class can have multiple variables.
+
+Data structure map vs class entity class!
+map have only key and value pair while entity class can have multiple variables.
 
 * [x] search for person by name
 * [x] add new contacts
