@@ -14,6 +14,10 @@ public class Print {
 
     }
 
+    public static void printDevider() {
+        System.out.println(devider);
+    }
+
 
     public static void centerCalc(String input) {
         int inputLength = input.length();

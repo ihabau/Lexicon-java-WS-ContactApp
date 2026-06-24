@@ -84,6 +84,12 @@ public class DataBase {
 
     }
 
+    public static void AlphabeticSorting() {
+
+        book.sort((contact1, contact2) -> contact1.getName().compareToIgnoreCase(contact2.getName()));
+
+    }
+
 
 
 

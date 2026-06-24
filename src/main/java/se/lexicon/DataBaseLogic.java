@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class DataBaseLogic {
 
 
-    public static void getByName(String name) {
+    public static DataBase getByName(String name) {
 
         // 2. Retrieve the specific object matching the name
         DataBase individualContact = DataBase.getContactByName(name);
@@ -19,8 +19,10 @@ public class DataBaseLogic {
             Print.printLeft("Extracted Name: " + contactName);
             Print.printLeft("Extracted Phone: " + contactPhone);
             Print.printLeft("Extracted Email: " + contactEmail);
+            return individualContact;
         } else {
             Print.printLeft("That contact does not exist in the book.");
+            return null;
         }
     }
     public static void getByNumber(String number) {
@@ -75,8 +77,8 @@ public class DataBaseLogic {
                 String contactEmail = contact.getMail();
 
                 Print.printLeft("Extracted Name: " + contactName);
-                Print.printLeft("Extracted Phone: " + contactPhone);
-                Print.printLeft("Extracted Email: " + contactEmail);
+                //Print.printLeft("Extracted Phone: " + contactPhone);
+                //Print.printLeft("Extracted Email: " + contactEmail);
             } else {
                 Print.printLeft("That contact does not exist in the book.");
             }
@@ -91,11 +93,29 @@ public class DataBaseLogic {
 
     }
 
-    public static void editByName(String name, String number, String mail) {
+    public static void editByName(String name, String newName, String number, String mail) {
+
+       // rethink this part
+        DataBase contact = getByName(name);
+
+        String contactName =  contact.getName();
+        String contactPhone = contact.getPhoneNumber();
+        String contactEmail = contact.getMail();
+
+        if (newName != null || !newName.isEmpty() ) {
+            contactName = newName;
+        }
+        if (newName != null || !number.isEmpty()) {
+            contactPhone = number;
+        }
+        if (newName != null || !mail.isEmpty() ) {
+            contactEmail = mail;
+        }
 
         DataBaseLogic.removeByName(name);
-        DataBase.addContact(name,number, mail);
+        DataBase.addContact(contactName, contactPhone, contactEmail);
 
+        DataBase.AlphabeticSorting();
     }
 
 }

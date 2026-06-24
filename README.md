@@ -27,6 +27,7 @@ map have only key and value pair while entity class can have multiple variables.
 * [x] add new contacts
 * [x] remove a contact
 * [x] edit contact
+* [x] sort in alphabetic order
 * [ ] brows all contacts in alphabatic order
 * [x] search by first letter
 * [ ] compare hash on add

@@ -5,16 +5,20 @@ package se.lexicon;
 public class Main {
     static void main() {
 
-        DataBase.addContact("bob", "0701234567", "bob@lexicon.se");
-        DataBase.addContact("bob", "0701234567", "bob@lexicon.se");
-        DataBase.addContact("Anna", "0701234567", "bob@lexicon.se");
-        DataBase.addContact("bo", "0701234567", "bob@lexicon.se");
-        DataBase.addContact("beast", "0701234567", "bob@lexicon.se");
-        DataBase.addContact("amber", "0701234567", "bob@lexicon.se");
+        TerminalUI.ContactPopulation();
+        DataBase.AlphabeticSorting();
+        TerminalUI.TerminalUI();
 
-       // DataBaseLogic.getByName("bo b ");
-       // DataBaseLogic.getByNumber("0701234567");
-       // DataBaseLogic.getByMail("bob@lexicon.se");
+        TerminalUI.printBook();
+
+
+        /*
+        DataBaseLogic.getByName("bo b ");
+        DataBaseLogic.getByNumber("0701234567");
+        DataBaseLogic.getByMail("bob@lexicon.se");
+
+
+
         DataBaseLogic.getByFirstChar("b");
 
         DataBaseLogic.removeByName("bob");
@@ -24,5 +28,7 @@ public class Main {
         DataBaseLogic.editByName("beast", "0711111112", "beastTheGreat@gmail.com");
         DataBaseLogic.getByFirstChar("b");
         DataBaseLogic.getByFirstChar("a");
+        */
     }
+
 }
