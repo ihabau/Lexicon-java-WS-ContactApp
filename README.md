@@ -33,8 +33,8 @@ map have only key and value pair while entity class can have multiple variables.
 * [ ] ~~compare hash on add~~
 * [x] build the terminal ui
 * [x] loop and exit
-* [ ] same number on number search.
-* [ ] same mail on mail search.
+* [ ] ~~same number on number search.~~
+* [ ] ~~same mail on mail search.~~
 
 ## Optional Challenges
 

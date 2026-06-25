@@ -21,17 +21,21 @@ public class DataBase {
 
     public static boolean addContact(String name, String number, String email) {
 
-        boolean alreadyExists = book.stream().anyMatch(contact -> contact.getName().equalsIgnoreCase(name));
-        if (alreadyExists) {
-            Print.printLeft("Contact already exist.");
-            return false;
-        } else {
+        boolean nameExists = book.stream().anyMatch(c -> c.getName().equalsIgnoreCase(name));
+        boolean phoneExists = book.stream().anyMatch(c -> c.getPhoneNumber().equals(number));
+        boolean emailExists = book.stream().anyMatch(c -> c.getMail().equalsIgnoreCase(email));
 
-            DataBase newContact = new DataBase(name, number, email);
-            book.add(newContact);
-            AlphabeticSorting();
-            return true;
+        if (nameExists || phoneExists || emailExists) {
+            if (nameExists) Print.printLeft("Name already exists.");
+            if (phoneExists) Print.printLeft("Phone number already exists.");
+            if (emailExists) Print.printLeft("Email already exists.");
+            return false;
         }
+
+        DataBase newContact = new DataBase(name, number, email);
+        book.add(newContact);
+        AlphabeticSorting();
+        return true;
     }
 
     // 1. ADD A STATIC SEARCH METHOD

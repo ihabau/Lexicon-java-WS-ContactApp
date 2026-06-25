@@ -184,16 +184,134 @@ public class TerminalUI {
     }
 
 
-    public static void ContactPopulation() {
+    private static boolean isPopulated = false;
 
-        // test contacts
-        DataBase.addContact("bob", "0701234567", "bob@lexicon.se");
-        DataBase.addContact("Susane", "0701234567", "bob@lexicon.se");
-        DataBase.addContact("Anna", "0701234567", "bob@lexicon.se");
-        DataBase.addContact("bo", "0701234567", "bob@lexicon.se");
-        DataBase.addContact("beast", "0701234567", "bob@lexicon.se");
-        DataBase.addContact("amber", "0701234567", "bob@lexicon.se");
-        DataBase.addContact("charlie", "0701234567", "bob@lexicon.se");
+    public static void ContactPopulation() {
+        if (isPopulated) return;
+        isPopulated = true;
+
+        String[][] contacts = {
+            // A - 4 contacts
+            {"Alice",      "0701000001", "alice@gmail.com"},
+            {"Adrian",     "0701000002", "adrian@yahoo.com"},
+            {"Amelia",     "0701000003", "amelia@outlook.com"},
+            {"Arthur",     "0701000004", "arthur@protonmail.com"},
+            // B - 4 contacts
+            {"Benjamin",   "0701000005", "benjamin@gmail.com"},
+            {"Brooke",     "0701000006", "brooke@yahoo.com"},
+            {"Blake",      "0701000007", "blake@icloud.com"},
+            {"Bianca",     "0701000008", "bianca@lexicon.se"},
+            // C - 4 contacts
+            {"Charlotte",  "0701000009", "charlotte@gmail.com"},
+            {"Caleb",      "0701000010", "caleb@yahoo.com"},
+            {"Chloe",      "0701000011", "chloe@outlook.com"},
+            {"Carter",     "0701000012", "carter@aol.com"},
+            // D - 4 contacts
+            {"David",      "0701000013", "david@gmail.com"},
+            {"Diana",      "0701000014", "diana@yahoo.com"},
+            {"Derek",      "0701000015", "derek@protonmail.com"},
+            {"Daisy",      "0701000016", "daisy@lexicon.se"},
+            // E - 3 contacts
+            {"Emma",       "0701000017", "emma@gmail.com"},
+            {"Ethan",      "0701000018", "ethan@yahoo.com"},
+            {"Eva",        "0701000019", "eva@outlook.com"},
+            // F - 3 contacts
+            {"Fiona",      "0701000020", "fiona@gmail.com"},
+            {"Felix",      "0701000021", "felix@yahoo.com"},
+            {"Faith",      "0701000022", "faith@icloud.com"},
+            // G - 4 contacts
+            {"George",     "0701000023", "george@gmail.com"},
+            {"Grace",      "0701000024", "grace@yahoo.com"},
+            {"Gavin",      "0701000025", "gavin@outlook.com"},
+            {"Gemma",      "0701000026", "gemma@aol.com"},
+            // H - 4 contacts
+            {"Henry",      "0701000027", "henry@gmail.com"},
+            {"Hannah",     "0701000028", "hannah@yahoo.com"},
+            {"Hugo",       "0701000029", "hugo@protonmail.com"},
+            {"Hailey",     "0701000030", "hailey@lexicon.se"},
+            // I - 3 contacts
+            {"Isaac",      "0701000031", "isaac@gmail.com"},
+            {"Iris",       "0701000032", "iris@yahoo.com"},
+            {"Ivan",       "0701000033", "ivan@outlook.com"},
+            // J - 4 contacts
+            {"Julia",      "0701000034", "julia@gmail.com"},
+            {"Jason",      "0701000035", "jason@yahoo.com"},
+            {"Jade",       "0701000036", "jade@icloud.com"},
+            {"Jasper",     "0701000037", "jasper@lexicon.se"},
+            // K - 3 contacts
+            {"Kevin",      "0701000038", "kevin@gmail.com"},
+            {"Kim",        "0701000039", "kim@yahoo.com"},
+            {"Kai",        "0701000040", "kai@outlook.com"},
+            // L - 4 contacts
+            {"Lily",       "0701000041", "lily@gmail.com"},
+            {"Liam",       "0701000042", "liam@yahoo.com"},
+            {"Luna",       "0701000043", "luna@protonmail.com"},
+            {"Logan",      "0701000044", "logan@aol.com"},
+            // M - 4 contacts
+            {"Mia",        "0701000045", "mia@gmail.com"},
+            {"Mason",      "0701000046", "mason@yahoo.com"},
+            {"Maya",       "0701000047", "maya@outlook.com"},
+            {"Morgan",     "0701000048", "morgan@lexicon.se"},
+            // N - 3 contacts
+            {"Noah",       "0701000049", "noah@gmail.com"},
+            {"Nora",       "0701000050", "nora@yahoo.com"},
+            {"Nathan",     "0701000051", "nathan@icloud.com"},
+            // O - 3 contacts
+            {"Olivia",     "0701000052", "olivia@gmail.com"},
+            {"Oscar",      "0701000053", "oscar@yahoo.com"},
+            {"Owen",       "0701000054", "owen@outlook.com"},
+            // P - 3 contacts
+            {"Peter",      "0701000055", "peter@gmail.com"},
+            {"Piper",      "0701000056", "piper@yahoo.com"},
+            {"Paige",      "0701000057", "paige@protonmail.com"},
+            // Q - 3 contacts
+            {"Quinn",      "0701000058", "quinn@gmail.com"},
+            {"Quincy",     "0701000059", "quincy@yahoo.com"},
+            {"Queen",      "0701000060", "queen@aol.com"},
+            // R - 4 contacts
+            {"Ryan",       "0701000061", "ryan@gmail.com"},
+            {"Rachel",     "0701000062", "rachel@yahoo.com"},
+            {"Riley",      "0701000063", "riley@outlook.com"},
+            {"Ruby",       "0701000064", "ruby@lexicon.se"},
+            // S - 4 contacts
+            {"Samuel",     "0701000065", "samuel@gmail.com"},
+            {"Sarah",      "0701000066", "sarah@yahoo.com"},
+            {"Simon",      "0701000067", "simon@icloud.com"},
+            {"Savannah",   "0701000068", "savannah@lexicon.se"},
+            // T - 4 contacts
+            {"Thomas",     "0701000069", "thomas@gmail.com"},
+            {"Taylor",     "0701000070", "taylor@yahoo.com"},
+            {"Tiffany",    "0701000071", "tiffany@outlook.com"},
+            {"Theo",       "0701000072", "theo@protonmail.com"},
+            // U - 3 contacts
+            {"Uma",        "0701000073", "uma@gmail.com"},
+            {"Uriah",      "0701000074", "uriah@yahoo.com"},
+            {"Ulysses",    "0701000075", "ulysses@aol.com"},
+            // V - 3 contacts
+            {"Victor",     "0701000076", "victor@gmail.com"},
+            {"Vanessa",    "0701000077", "vanessa@yahoo.com"},
+            {"Vance",      "0701000078", "vance@outlook.com"},
+            // W - 3 contacts
+            {"Wendy",      "0701000079", "wendy@gmail.com"},
+            {"William",    "0701000080", "william@yahoo.com"},
+            {"Willow",     "0701000081", "willow@icloud.com"},
+            // X - 3 contacts
+            {"Xavier",     "0701000082", "xavier@gmail.com"},
+            {"Xena",       "0701000083", "xena@yahoo.com"},
+            {"Xander",     "0701000084", "xander@outlook.com"},
+            // Y - 3 contacts
+            {"Yara",       "0701000085", "yara@gmail.com"},
+            {"Yosef",      "0701000086", "yosef@yahoo.com"},
+            {"Yvonne",     "0701000087", "yvonne@protonmail.com"},
+            // Z - 3 contacts
+            {"Zach",       "0701000088", "zach@gmail.com"},
+            {"Zoe",        "0701000089", "zoe@yahoo.com"},
+            {"Zane",        "0701000090", "zane@outlook.com"}
+        };
+
+        for (String[] c : contacts) {
+            DataBase.addContact(c[0], c[1], c[2]);
+        }
     }
 
 }
