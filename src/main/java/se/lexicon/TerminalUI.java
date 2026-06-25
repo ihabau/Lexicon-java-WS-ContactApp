@@ -40,18 +40,18 @@ public class TerminalUI {
                     continue;
                 }
             }
+            Print.printLeft("Press Enter to go back to menu!");
+            DataBaseLogic.inputScanner();
         }
 
     }
 
     public static String pullByname() {
 
-
         Print.printLeft("Enter name!");
         String choice = DataBaseLogic.inputScanner();
         DataBaseLogic.getByName(choice);
         return choice;
-
     }
 
     public static void pullByNumber() {
@@ -73,9 +73,7 @@ public class TerminalUI {
         Print.printLeft("Enter first letter!");
         String choice = DataBaseLogic.inputScanner();
         DataBaseLogic.getByFirstChar(choice);
-        Print.printLeft("Enter name!");
         pullByname();
-
     }
 
     public static void editContact() {
@@ -86,7 +84,6 @@ public class TerminalUI {
         Print.printLeft("3: Edit mail.");
         Print.printLeft("4: Edit all three.");
         Print.printLeft("5: Exit.");
-
 
         String choice = DataBaseLogic.inputScanner();
 
@@ -122,9 +119,7 @@ public class TerminalUI {
                 onReturn();
             }
             default -> Print.printLeft("Invalid choice select option 1-5.");
-
         }
-
     }
 
     public static void addContact() {
@@ -155,7 +150,6 @@ public class TerminalUI {
 
             onReturn();
             return;
-
         }
     }
 
@@ -163,7 +157,6 @@ public class TerminalUI {
         Print.printLeft("Enter name to be reomved.");
         String name = pullByname();
         Print.printLeft("Delete contact: " + name + "? Y/N");
-
 
         while (true) {
             String choice = DataBaseLogic.inputScanner().toUpperCase();
@@ -201,13 +194,6 @@ public class TerminalUI {
         DataBase.addContact("beast", "0701234567", "bob@lexicon.se");
         DataBase.addContact("amber", "0701234567", "bob@lexicon.se");
         DataBase.addContact("charlie", "0701234567", "bob@lexicon.se");
-
     }
-
-
-
-
-
-
 
 }

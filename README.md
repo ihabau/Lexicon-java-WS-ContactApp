@@ -30,9 +30,11 @@ map have only key and value pair while entity class can have multiple variables.
 * [x] sort in alphabetic order
 * [x] browse all contacts in alphabatic order
 * [x] search by first letter
-* [ ] compare hash on add not needed since the add is based on name only
-* [50%] build the terminal ui
+* [ ] ~~compare hash on add~~
+* [x] build the terminal ui
 * [x] loop and exit
+* [ ] same number on number search.
+* [ ] same mail on mail search.
 
 ## Optional Challenges
 

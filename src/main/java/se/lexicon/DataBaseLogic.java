@@ -5,7 +5,6 @@ import java.util.Scanner;
 
 public class DataBaseLogic {
 
-
     public static DataBase getByName(String name) {
 
         // 2. Retrieve the specific object matching the name
@@ -28,10 +27,8 @@ public class DataBaseLogic {
     }
     public static void getByNumber(String number) {
 
-        // 2. Retrieve the specific object matching the name
         DataBase individualContact = DataBase.getContactByNumber(number);
 
-        // 3. Extract and use the individual data elements
         if (individualContact != null) {
             String contactName = individualContact.getName();
             String contactPhone = individualContact.getPhoneNumber();
@@ -46,10 +43,8 @@ public class DataBaseLogic {
     }
     public static void getByMail(String mail) {
 
-        // 2. Retrieve the specific object matching the name
         DataBase individualContact = DataBase.getContactByMail(mail);
 
-        // 3. Extract and use the individual data elements
         if (individualContact != null) {
             String contactName = individualContact.getName();
             String contactPhone = individualContact.getPhoneNumber();
@@ -72,26 +67,18 @@ public class DataBaseLogic {
         individualContact.forEach(contact -> {
 
             if (contact != null) {
-                // testing print
                 String contactName =  contact.getName();
-                String contactPhone = contact.getPhoneNumber();
-                String contactEmail = contact.getMail();
 
                 Print.printLeft("Extracted Name: " + contactName);
-                //Print.printLeft("Extracted Phone: " + contactPhone);
-                //Print.printLeft("Extracted Email: " + contactEmail);
             } else {
                 Print.printLeft("That contact does not exist in the book.");
             }
-
         });
-
     }
 
     public static void  removeByName (String name) {
 
         DataBase.book.removeIf( contact ->  contact.getName().equalsIgnoreCase(name) );
-
     }
 
     public static void editByName(String name, String newName, String number, String mail) {
@@ -115,7 +102,6 @@ public class DataBaseLogic {
 
         DataBaseLogic.removeByName(name);
         DataBase.addContact(contactName, contactPhone, contactEmail);
-
         DataBase.AlphabeticSorting();
     }
 
@@ -124,16 +110,12 @@ public class DataBaseLogic {
         DataBase.book.forEach(contact -> Print.printLeft(contact.getName()));
         Print.printLeft("Press Enter to go back to main menu.");
         inputScanner();
-
     }
 
     public static String inputScanner() {
 
-
         Scanner input = new Scanner(System.in);
         String res = input.nextLine();
         return res;
-
-
     }
 }
