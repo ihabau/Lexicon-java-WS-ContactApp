@@ -7,38 +7,40 @@ public class TerminalUI {
 
     public static void TerminalUI() {
 
-        Print.centerCalc("Contact book");
+        while ( true ) {
+        Print.printCenter("Contact book");
         Print.printLeft("1: Search by name.");
         Print.printLeft("2: Search by number.");
         Print.printLeft("3: Search by mail.");
         Print.printLeft("4: Search by first letter.");
         Print.printLeft("5: Edit contact.");
+        Print.printLeft("6: Add contact.");
+        Print.printLeft("7: Remove contact.");
+        Print.printLeft("8: Show all contacts.");
+        Print.printLeft("9: Exit.");
         Print.printDevider();
-        String choice = inputScanner();
+            String choice = DataBaseLogic.inputScanner();
 
-        if ( choice.equalsIgnoreCase("1")) {
-            pullByname();
+            switch (choice) {
+                case "1" -> pullByname();
+                case "2" -> pullByNumber();
+                case "3" -> pullByMail();
+                case "4" -> pullByCharacter();
+                case "5" -> editContact();
+                case "6" -> addContact();
+                case "7" -> removeContact();
+                case "8" -> DataBaseLogic.printBook();
+                case "9" -> {
+                    Print.printLeft("Goodbye");
+                    MainLoop.isRunning = false;
+                    return;
+                }
+                default -> {
+                    Print.printLeft("Invalid choice. Please select options 1-8.");
+                    continue;
+                }
+            }
         }
-
-        if ( choice.equalsIgnoreCase("2")) {
-            pullByNumber();
-        }
-
-        if ( choice.equalsIgnoreCase("3")) {
-            pullByMail();
-
-        }
-
-        if ( choice.equalsIgnoreCase("4")) {
-            pullByCharacter();
-        }
-
-        if (choice.equalsIgnoreCase("5")) {
-            editContact();
-
-        }
-
-
 
     }
 
@@ -46,7 +48,7 @@ public class TerminalUI {
 
 
         Print.printLeft("Enter name!");
-        String choice = inputScanner();
+        String choice = DataBaseLogic.inputScanner();
         DataBaseLogic.getByName(choice);
         return choice;
 
@@ -55,21 +57,21 @@ public class TerminalUI {
     public static void pullByNumber() {
 
         Print.printLeft("Enter phone number!");
-        String choice = inputScanner();
+        String choice = DataBaseLogic.inputScanner();
         DataBaseLogic.getByNumber(choice);
     }
 
     public static void pullByMail() {
 
         Print.printLeft("Enter mail address!");
-        String choice = inputScanner();
+        String choice = DataBaseLogic.inputScanner();
         DataBaseLogic.getByMail(choice);
     }
 
     public static void pullByCharacter() {
 
         Print.printLeft("Enter first letter!");
-        String choice = inputScanner();
+        String choice = DataBaseLogic.inputScanner();
         DataBaseLogic.getByFirstChar(choice);
         Print.printLeft("Enter name!");
         pullByname();
@@ -83,44 +85,111 @@ public class TerminalUI {
         Print.printLeft("2: Edit number.");
         Print.printLeft("3: Edit mail.");
         Print.printLeft("4: Edit all three.");
+        Print.printLeft("5: Exit.");
 
-        String res = inputScanner();
 
-        if (res.equalsIgnoreCase("1")) {
-            Print.printLeft("Enter new name");
-            String newName = inputScanner();
-            DataBaseLogic.editByName(name, newName, null, null);
+        String choice = DataBaseLogic.inputScanner();
 
-        }
+        switch (choice) {
 
-        if (res.equalsIgnoreCase("2")) {
+            case "1" -> {
+                Print.printLeft("Enter new name");
+                String newName = DataBaseLogic.inputScanner();
+                DataBaseLogic.editByName(name, newName, null, null);
+            }
+            case "2" -> {
+                Print.printLeft("Enter new phone number.");
+                String newNumber = DataBaseLogic.inputScanner();
+                DataBaseLogic.editByName(name, null, newNumber, null);
+            }
+            case "3" -> {
+                Print.printLeft("Enter new mail address.");
+                String newMail = DataBaseLogic.inputScanner();
+                DataBaseLogic.editByName(name, null, null, newMail);
+            }
+            case "4" -> {
+                Print.printLeft("Enter new name");
+                String newName = DataBaseLogic.inputScanner();
 
-            Print.printLeft("Enter new phone number.");
-            String newNumber = inputScanner();
-            DataBaseLogic.editByName(name, null, newNumber, null);
-        }
+                Print.printLeft("Enter new phone number.");
+                String newNumber = DataBaseLogic.inputScanner();
 
-        if (res.equalsIgnoreCase("3")) {
+                Print.printLeft("Enter new mail address.");
+                String newMail = DataBaseLogic.inputScanner();
+                DataBaseLogic.editByName(name, newName, newNumber, newMail);
+            }
+            case "5" -> {
+                onReturn();
+            }
+            default -> Print.printLeft("Invalid choice select option 1-5.");
 
-            Print.printLeft("Enter new mail address.");
-            String newMail = inputScanner();
-            DataBaseLogic.editByName(name, null, null, newMail);
-        }
-
-        if (res.equalsIgnoreCase("4")) {
-
-            Print.printLeft("Enter new name");
-            String newName = inputScanner();
-
-            Print.printLeft("Enter new phone number.");
-            String newNumber = inputScanner();
-
-            Print.printLeft("Enter new mail address.");
-            String newMail = inputScanner();
-            DataBaseLogic.editByName(name, newName, newNumber, newMail);
         }
 
     }
+
+    public static void addContact() {
+
+        Print.printCenter("Add new contact");
+        while (true) {
+
+            Print.printLeft("Enter name.");
+            String name = DataBaseLogic.inputScanner();
+
+            Print.printLeft("Enter number.");
+            String number = DataBaseLogic.inputScanner();
+
+            Print.printLeft("Enter mail address.");
+            String mail = DataBaseLogic.inputScanner();
+
+            boolean res = DataBase.addContact(name, number, mail);
+
+            if (!res) {
+
+                Print.printLeft("Try again? Y/N");
+                String res2 = DataBaseLogic.inputScanner();
+
+                if (res2.equalsIgnoreCase("y")) {
+                    continue;
+                }
+            }
+
+            onReturn();
+            return;
+
+        }
+    }
+
+    public static void removeContact() {
+        Print.printLeft("Enter name to be reomved.");
+        String name = pullByname();
+        Print.printLeft("Delete contact: " + name + "? Y/N");
+
+
+        while (true) {
+            String choice = DataBaseLogic.inputScanner().toUpperCase();
+            switch (choice) {
+                case "Y" -> {
+                    DataBaseLogic.removeByName(name);
+                    return;
+                }
+                case "N" -> {
+                    onReturn();
+                    return;
+                }
+                default -> {
+                    Print.printLeft("Wrong input try again.");
+                    continue;
+                }
+            }
+        }
+    }
+
+
+    public static void onReturn() {
+        Print.printCenter("Returning to main screen.");
+        return;
+    }
+
 
     public static void ContactPopulation() {
 
@@ -135,20 +204,9 @@ public class TerminalUI {
 
     }
 
-    public static String inputScanner() {
-
-        Scanner input = new Scanner(System.in);
-        String res = input.next();
-        return res;
 
 
-    }
 
-    public static void printBook() {
-
-        DataBase.book.forEach(contact -> Print.printLeft(contact.getName()));
-
-    }
 
 
 

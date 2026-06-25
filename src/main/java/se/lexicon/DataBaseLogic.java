@@ -1,6 +1,7 @@
 package se.lexicon;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class DataBaseLogic {
 
@@ -118,4 +119,21 @@ public class DataBaseLogic {
         DataBase.AlphabeticSorting();
     }
 
+    public static void printBook() {
+
+        DataBase.book.forEach(contact -> Print.printLeft(contact.getName()));
+        Print.printLeft("Press Enter to go back to main menu.");
+        inputScanner();
+
+    }
+
+    public static String inputScanner() {
+
+
+        Scanner input = new Scanner(System.in);
+        String res = input.nextLine();
+        return res;
+
+
+    }
 }

@@ -1,5 +1,4 @@
 package se.lexicon;
-import java.util.*;
 
 public class Print {
 
@@ -19,7 +18,7 @@ public class Print {
     }
 
 
-    public static void centerCalc(String input) {
+    public static void printCenter(String input) {
         int inputLength = input.length();
         int leftSide = (programLength - inputLength -4) /  2;
         int rightSide = 0;

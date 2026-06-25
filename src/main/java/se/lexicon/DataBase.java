@@ -19,15 +19,18 @@ public class DataBase {
 
     }
 
-    public static void addContact(String name, String number, String email) {
+    public static boolean addContact(String name, String number, String email) {
 
         boolean alreadyExists = book.stream().anyMatch(contact -> contact.getName().equalsIgnoreCase(name));
         if (alreadyExists) {
             Print.printLeft("Contact already exist.");
+            return false;
         } else {
 
             DataBase newContact = new DataBase(name, number, email);
             book.add(newContact);
+            AlphabeticSorting();
+            return true;
         }
     }
 
